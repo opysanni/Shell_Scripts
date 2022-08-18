@@ -1,3 +1,5 @@
+#This was a code to get/read input
+#based on a condtion set, determines the output
 echo -ne "Enter Your Name:" 
 read name
 
