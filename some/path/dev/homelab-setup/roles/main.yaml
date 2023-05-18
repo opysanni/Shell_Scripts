@@ -1,0 +1,19 @@
+---
+- name: Install Jenkins on Jenkins VM
+  hosts: jenkins
+  become: true
+  roles:
+    - jenkins
+
+- name: Install Docker and Ansible on Docker/Ansible VM
+  hosts: docker_ansible
+  become: true
+  roles:
+    - docker
+    - ansible
+
+- name: Install Kubernetes on Kubernetes VM
+  hosts: kubernetes
+  become: true
+  roles:
+    - kubernetes
