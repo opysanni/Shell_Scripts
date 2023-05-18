@@ -1,2 +1,0 @@
-apache_port: 8090
-apache_index_content: "<html><head><title>Welcome to My Webpage!</title></head><body><h1>Hello World!</h1><p>This is a test webpage served by Apache.</p></body></html>"

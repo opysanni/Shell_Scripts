@@ -1,7 +1,0 @@
----
-- name: Install Docker and Ansible dependencies
-  hosts: docker_ansible
-  become: true
-  roles:
-    - docker
-    - ansible

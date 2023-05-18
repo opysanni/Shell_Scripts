@@ -1,6 +1,0 @@
----
-- name: Install Kubernetes dependencies
-  hosts: kubernetes
-  become: true
-  roles:
-    - kubernetes
