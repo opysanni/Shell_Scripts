@@ -1,0 +1,59 @@
+Source: https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/
+
+
+Part 1 - As Root User
+
+Docker/MiniKube
+
+exit
+groups
+sudo usermod -aG docker ubuntu
+groups
+exit
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+sudo usermod -aG docker ${USER}
+su - ${USER}
+sudo usermod -aG docker ${USER}
+su - ${USER}
+logout
+exit
+install kubectl
+install Kubectl
+Sudo apt install Kubectl
+sudo apt install kubectl
+sudo apt update -y
+sudo apt upgrade -y
+sudo reboot
+sudo apt install -y curl wget apt-transport-https
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube version
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version -o yaml
+minikube start --driver=docker
+exit
+
+~                                        
+
+
+Part 2 - As Ubuntu User
+
+Docker/MiniKube
+
+ sudo su
+sudo usermod -aG docker ${USER}
+su - ${USER}
+sudo su - ${USER}
+groups
+sudo su
+minikube start --driver=docker
+minikube start --addons=ingress --cpus=2 --cni=flannel --install-addons=true --kubernetes-version=stable --memory=6g
+minikube start --addons=ingress --cpus=2 --cni=flannel --install-addons=true --kubernetes-version=stable --memory=3g
+                                            

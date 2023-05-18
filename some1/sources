@@ -1,0 +1,11 @@
+Docker on Ubuntu: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+
+Ansible:
+  sudo apt-add-repository ppa:ansible/ansible apt-add-repository
+  
+  sudo apt update apt-add-repository
+  sudo apt install ansible -y
+  
+Jenkins: still working on it. 
+
+

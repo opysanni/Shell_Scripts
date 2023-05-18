@@ -1,0 +1,36 @@
+node {
+    
+    stage ('Git Checkout'){
+        git 'https://github.com/vikash-kumar01/Kubernetes_Project.git'
+    }
+    
+    stage ('Sending docker file to Ansible over SSH'){
+      //  sshagent(credentials: ['ansible_server_connection'], ignoreMissing: true)
+        sshagent(['ansible_server_connection']) {
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.26.178'
+            sh 'scp /var/lib/jenkins/workspace/pipelineproject/* ubuntu@172.31.26.178:/home/ubuntu'
+        }
+    }
+    stage ('Docker Image Build'){
+        sshagent(['ansible_server_connection']) {
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.26.178 -t 'cd /home/ubuntu/ && docker build -t $JOB_NAME:v1.$BUILD_ID .'"
+         //   sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.26.178 cd /home/ubuntu/ && docker build -t $JOB_NAME:v1.$BUILD_ID .'
+         //   sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.26.178 docker build -t $JOB_NAME:v1.$BUILD_ID .'
+        }
+
+    }
+}
+
+
+FROM centos:latest
+MAINTAINER vikashashoke@gmail.com
+RUN yum install -y httpd \
+    zip \
+    unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
+WORKDIR /var/www/html/
+RUN unzip photogenic.zip
+RUN cp -rvf photogenic/* .
+RUN rm -rf photogenic photogenic.zip
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80 22
